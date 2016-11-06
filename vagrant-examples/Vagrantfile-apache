@@ -1,0 +1,42 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/xenial64"
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # config.vm.network "public_network"
+  # config.vm.network "private_network", ip: "192.168.0.100"
+   
+  # config.vm.synced_folder "./ansible", "/home/ubuntu/ansible"
+ 
+  # config.vm.provider "virtualbox" do |vb|
+  #   # Display the VirtualBox GUI when booting the machine
+  
+  #   # Customize the amount of memory on the VM:
+  #   
+  
+   config.vm.define "front" do |front| 
+        front.vm.box = "ubuntu/trusty64"
+        front.vm.network "private_network", ip:"192.168.77.10"
+        front.vm.hostname = "front1"
+        
+        front.vm.provider :virtualbox do |vb|
+           vb.name = "front"
+           #vb.gui = true
+           #vb.memory = "1024"
+        end
+        
+    		front.vm.provision "ansible_local" do |ansible|
+               ansible.playbook = "apache.yml"
+    		   ansible.verbose  = true
+    		end
+    end    
+  
+end
