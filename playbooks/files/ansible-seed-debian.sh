@@ -3,6 +3,8 @@
 set -e
 set -x
 
+if [ ! -d "/etc/ansible" ]; then
+
 export DEBIAN_FRONTEND=noninteractive
 echo "Updating APT cache"
 apt-get update
@@ -24,6 +26,7 @@ apt-get -o Dpkg::Options::="--force-confold" install \
     aptitude            \
     git                 \
     python-apt          \
+    apt-transport-https \
     python-distutils-extra \
     python-setuptools   \
     python-apt-dev      \
@@ -44,3 +47,5 @@ echo "Installing ansible via pip"
 pip install -U pip ansible
 
 mkdir -p /etc/ansible/
+
+fi
