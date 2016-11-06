@@ -10,4 +10,3 @@ taken into account by all ansible commands.
 * Run `ansible all -m ping`: if you get `pong` response from all hosts, you are
 ready to operate.
 
-Have fun. Hack in peace.
