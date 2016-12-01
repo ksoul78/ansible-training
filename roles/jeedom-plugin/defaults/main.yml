@@ -1,0 +1,5 @@
+---
+plugin_name: 'airQ'
+plugin_root: /var/www/html/plugins/airQ
+plugin_repo: https://github.com/ksoul78/plugin-airQ.git
+plugin_user: www-data
