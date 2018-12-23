@@ -13,15 +13,6 @@
     dest=/bin/sh
     state=link
 
-- name: backports repositories are actives
-  apt_repository:
-    repo="{{ item }}"
-    state=present
-    update_cache=yes
-  with_items:
-    - "deb http://cloudfront.debian.net/debian {{ ansible_distribution_release }}-backports main"
-    - "deb-src http://cloudfront.debian.net/debian {{ ansible_distribution_release }}-backports main"
-
 - name: common packages are installed
   apt:
     pkg="{{ item }}"
