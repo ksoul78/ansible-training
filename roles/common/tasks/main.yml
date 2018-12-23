@@ -14,8 +14,8 @@
     state=link
 
 - name: common packages are installed
-  apt:
-    package="{{ item }}"
+  pacakge:
+    name="{{ item }}"
     state=present
   with_items:
     - mosh
